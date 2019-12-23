@@ -38,8 +38,7 @@ poly transform(poly P, bool inverse) {
     } 
     return P;
 }
-// NTT
-// 				k		g
+// NTT          k       g
 // 5767169      19      3
 // 7340033      20      3
 // 23068673     21      3
