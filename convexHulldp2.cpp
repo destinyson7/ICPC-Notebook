@@ -10,7 +10,7 @@ using namespace std;
 #define fi first
 #define se second
 
-struct Line {
+struct Line {                                        // gives max value of x
     ll k, m;
     mutable ll p;
     bool operator<(const Line& o) const {
@@ -46,75 +46,11 @@ struct LineContainer : multiset<Line, less<>> {
 };
 
 
-ll a[100001];
-ll b[100001];
-ve<ve<ll>>ar(100001);
-ll sub[100001];
-ll ans[100001];
 
-void dfs1(ll u,ll p){
-    sub[u]=1;
-    for(auto i:ar[u]){
-        if(i!=p){
-            dfs1(i,u);
-            sub[u]+=sub[i];
-        }
-    }
+int main(){
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    LineContainer lc;
+    return 0;
 }
-
-void dfs2(ll u,ll p,auto &cur){
-    ll mx=-1,chd=-1,leaf=1;
-    for(auto i:ar[u]){
-        if(i!=p && sub[i]>mx){
-            mx=sub[i];
-            chd=i;
-            leaf=0;
-        }
-    }
-    if(chd!=-1){
-        dfs2(chd,u,cur);
-    }
-    for(auto i:ar[u]){
-        if(i!=p && i!=chd){
-            LineContainer temp;
-            dfs2(i,u,temp);
-            for(auto j:temp){
-                cur.add(j.k,j.m);
-            }
-        }
-    }
-    if(!leaf){
-        ans[u]=-cur.query(a[u]);
-    }
-    else{
-        ans[u]=0;
-    }
-    cur.add(-b[u],-ans[u]);
-}
-
-    int main(){
-        ios_base::sync_with_stdio(0);
-        cin.tie(0);
-        cout.tie(0);
-        ll n;
-        cin>>n;
-        for(ll i=1;i<=n;i++){
-            cin>>a[i];
-        }
-        for(ll i=1;i<=n;i++){
-            cin>>b[i];
-        }
-        for(ll i=1,u,v;i<n;i++){
-            cin>>u>>v;
-            ar[u].pb(v);
-            ar[v].pb(u);
-        }
-        dfs1(1,0);
-        LineContainer lc;
-        dfs2(1,0,lc);
-        for(ll i=1;i<=n;i++){
-            cout << ans[i] << " ";
-        }
-        cout << "\n";
-        return 0;
-    }
