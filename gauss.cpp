@@ -2,6 +2,8 @@
 using namespace std;
 #define ll long long int
 
+#define N 63
+
 // --------------- Gauss Jordan ---------------
 
 const double EPS = 1e-9;
