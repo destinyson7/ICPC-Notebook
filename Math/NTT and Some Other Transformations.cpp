@@ -1,14 +1,6 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define ll long long int
-#define ve vector
 #define INF 1e16
-
-
-// -------------------- Fast Walsh–Hadamard transform (XOR)--------------
-
+//Fast Walsh–Hadamard transform (XOR)
 #define poly vector<ll>
-
 poly FWHT(poly P, bool inverse) {
     for (len = 1; 2 * len <= degree(P); len <<= 1) {
         for (i = 0; i < degree(P); i += 2 * len) {
@@ -19,18 +11,14 @@ poly FWHT(poly P, bool inverse) {
                 P[i + len + j] = u - v;
             }
         }
-    }
-    
+    } 
     if (inverse) {
         for (i = 0; i < degree(P); i++)
             P[i] = P[i] / degree(P);
     }
-
     return P;
 }
-
-// ----------------------- & operator -----------------
-
+// & operator
 poly transform(poly P, bool inverse) {
     for (len = 1; 2 * len <= degree(P); len <<= 1) {
         for (i = 0; i < degree(P); i += 2 * len) {
@@ -47,13 +35,10 @@ poly transform(poly P, bool inverse) {
                 }
             }
         }
-    }
-    
+    } 
     return P;
 }
-
-// ------------------ NTT ---------------------------
-
+// NTT
 // 				k		g
 // 5767169      19      3
 // 7340033      20      3
@@ -65,8 +50,6 @@ poly transform(poly P, bool inverse) {
 // 1004535809   21      3
 // 2013265921   27      31
 // 2281701377   27      3
-
-
 const ll mod = 998244353;
 ll inverse(ll x, ll y){
 	ll rem = 1;
@@ -115,7 +98,6 @@ void ntt(vector<ll> &a, bool invert){
 			x = x * n_1 % mod;
 	}
 }
-
 vector<ll> multiply(vector<ll> const &a, vector<ll> const &b){
 	vector<ll> fa(a.begin(), a.end()), fb(b.begin(), b.end());
 	ll n = 1;
@@ -128,16 +110,10 @@ vector<ll> multiply(vector<ll> const &a, vector<ll> const &b){
 	for(ll i = 0; i < n; i++)
 		fa[i] = fa[i] * fb[i] % mod;
 	ntt(fa, true);
-
 	return fa;
 }
-
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    ll t;
-    cin>>t;
+    ll t; cin>>t;
     while(t--){
         ll n;
         cin>>n;

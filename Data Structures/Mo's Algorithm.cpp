@@ -1,12 +1,7 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 void remove(idx);  // TODO: remove value at idx from data structure
 void add(idx);     // TODO: add value at idx from data structure
 int get_answer();  // TODO: extract the current answer of the data structure
-
 int block_size;
-
 struct Query {
     int l, r, idx;
     bool operator<(Query other) const
@@ -15,13 +10,10 @@ struct Query {
                make_pair(other.l / block_size, other.r);
     }
 };
-
 vector<int> mo_s_algorithm(vector<Query> queries) {
     vector<int> answers(queries.size());
     sort(queries.begin(), queries.end());
-
     // TODO: initialize data structure
-
     int cur_l = 0;
     int cur_r = -1;
     // invariant: data structure will always reflect the range [cur_l, cur_r]
@@ -45,9 +37,4 @@ vector<int> mo_s_algorithm(vector<Query> queries) {
         answers[q.idx] = get_answer();
     }
     return answers;
-}
-
-int main()
-{
-    return 0;
 }
