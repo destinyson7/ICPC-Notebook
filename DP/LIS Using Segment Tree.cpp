@@ -3,8 +3,7 @@ int compare(pair<int, int> p1, pair<int, int> p2){
         return p1.second > p2.second; 
     return p1.first < p2.first; 
 } 
-void buildTree(int* tree, int pos, int low, int high,int index, int value) 
-{  
+void buildTree(int* tree, int pos, int low, int high,int index, int value) {  
     if (index < low || index > high) 
         return; 
     if (low == high) { 
@@ -16,8 +15,7 @@ void buildTree(int* tree, int pos, int low, int high,int index, int value)
     buildTree(tree, 2 * pos + 2, mid + 1, high, index, value); 
     tree[pos] = max(tree[2 * pos + 1], tree[2 * pos + 2]); 
 } 
-int findMax(int* tree, int pos, int low, int high, int start, int end) 
-{ 
+int findMax(int* tree, int pos, int low, int high, int start, int end) { 
     if (low >= start && high <= end)  
         return tree[pos]; 
     if (start > high || end < low)  

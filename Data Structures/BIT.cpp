@@ -1,6 +1,6 @@
 // 1-based indexing
 /* Problem Statement:
-Given a sequence of n numbers a1, a2, ..., an and a number of k- queries.
+Given a sequence of n numbers a1, a2,..., an and a number of k-queries.
 A k-query is a triple (i, j, k) (1<=i<=j<=n). For each k-query
 (i, j, k), you have to return the number of elements greater than k in
 the subsequence ai, ai+1, ..., aj. */
@@ -29,34 +29,18 @@ ll query(ll idx){
 	}
 	return sum;
 }
-inline int in(){
-	int N=0;
-	register char c=getchar();
-	while( c < 48 || c > 57 ){
-		c=getchar();
-	}
-	while(c>47 && c< 58){
-		N = (N << 3) + (N << 1) + (c - 48);
-		c=getchar();
-	}
-	return N;
-}
 struct M Ssp[230000];
 int main(){
-	ll n;n=in();
-	ll q;
+	ll n;cin >> n; ll q;
 	for (int i = 0; i < n; ++i){
-		ll a; 
-		a=in();
+		ll a; cin >> a;
 		Ssp[i].key=a;
-		Ssp[i].key2=0;
+		Ssp[i].key2=Ssp[i].key3=0;
 		Ssp[i].key4=i;
-		Ssp[i].key3=0;
 	}
-	q=in();
+	cin >> q;
 	for (int i = 0; i < q; ++i){
-		ll l,r,k;
-		l=in(); r=in(); q=in();
+		ll l,r,k; cin >> l >> r >> k;
 		Ssp[i+n].key=k;
 		Ssp[i+n].key2=l;
 		Ssp[i+n].key3=r;
