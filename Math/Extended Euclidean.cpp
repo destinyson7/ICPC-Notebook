@@ -14,8 +14,7 @@ ll extendedeuc(ll a, ll b){
 int main(){
     ll a, b, c;
     cin >> a >> b >> c;
- 	if (c%gcd(a, b)!=0)
- 	{
+ 	if (c%gcd(a, b)!=0){
  		cout << "-1";
  		return 0;
  	}
