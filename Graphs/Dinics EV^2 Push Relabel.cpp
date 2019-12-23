@@ -12,20 +12,15 @@
 	implimentation gives results within seconds for n = 10000 nodes, m = 1000000 
 	edges. */
 typedef ll fType;
-struct edge
-{
+struct edge{
 	ll from, to;
 	fType cap, flow;
 	edge(ll from, ll to, fType cap, fType flow = 0) : from(from), to(to), cap(cap), flow(flow) {}	
 };
-struct PushRelabel
-{
-	ll N;
-	vector<edge> edges;
-	vector<vector<ll> > G;
-	vector<ll> h, inQ, count;
-	vector<fType> excess;
-	queue<ll> Q;
+struct PushRelabel{
+	ll N; vector<edge> edges;
+	vector<vector<ll> > G; vector<ll> h, inQ, count;
+	vector<fType> excess; queue<ll> Q;
 	PushRelabel(ll N) : N(N), count(N<<1), G(N), h(N), inQ(N), excess(N) {}
 	void addEdge(ll from, ll to, ll cap) {
 		G[from].push_back(edges.size());
@@ -88,8 +83,7 @@ struct PushRelabel
 		return excess[snk];
 	}
 };
-int main()
-{
+int main(){
 	ll n, m;
 	cin >> n >> m;
 	PushRelabel df(n);
@@ -103,5 +97,4 @@ int main()
 		}
 	}
 	cout << df.getFlow(0, n-1) << "\n";
-	return 0;
 }

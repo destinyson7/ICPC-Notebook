@@ -1,15 +1,8 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-struct Edge
-{
+struct Edge{
     int from, to, capacity, cost;
 };
-
 vector<vector<int>> adj, cost, capacity;
-
 const int INF = 1e9;
-
 void shortest_paths(int n, int v0, vector<int>& d, vector<int>& p) {
     d.assign(n, INF);
     d[v0] = 0;
@@ -17,7 +10,6 @@ void shortest_paths(int n, int v0, vector<int>& d, vector<int>& p) {
     queue<int> q;
     q.push(v0);
     p.assign(n, -1);
-
     while (!q.empty()) {
         int u = q.front();
         q.pop();
@@ -34,7 +26,6 @@ void shortest_paths(int n, int v0, vector<int>& d, vector<int>& p) {
         }
     }
 }
-
 int min_cost_flow(int N, vector<Edge> edges, int K, int s, int t) {
     adj.assign(N, vector<int>());
     cost.assign(N, vector<int>(N, 0));
@@ -46,7 +37,6 @@ int min_cost_flow(int N, vector<Edge> edges, int K, int s, int t) {
         cost[e.to][e.from] = -e.cost;
         capacity[e.from][e.to] = e.capacity;
     }
-
     int flow = 0;
     int cost = 0;
     vector<int> d, p;
@@ -73,14 +63,8 @@ int min_cost_flow(int N, vector<Edge> edges, int K, int s, int t) {
             cur = p[cur];
         }
     }
-
     if (flow < K)
         return -1;
     else
         return cost;
-}
-
-int main()
-{
-    return 0;
 }

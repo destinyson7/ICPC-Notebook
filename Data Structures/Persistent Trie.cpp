@@ -27,12 +27,9 @@ struct trie{
 trie Node[N*21];
 ll getNode(){
 	trie temp;
-	temp.last[0]=-1;
-	temp.last[1]=-1;
-	temp.nxt[0]=-1;
-	temp.nxt[1]=-1;
-	Node[cur]=temp;
-	cur++;
+	temp.last[0]=-1; temp.last[1]=-1;
+	temp.nxt[0]=-1;	temp.nxt[1]=-1;
+	Node[cur]=temp;	cur++;
 	return (cur-1);
 }
 ll root[N];
@@ -54,7 +51,7 @@ ll insert(ll nd,ll par,vll s,ll id){
 }
 int main()
 {
-	ll t;cin >> t;
+	ll t; cin >> t;
 	while(t--){
 		ll n,q; cin >> n >> q;
 		ll ary[n];
@@ -63,8 +60,7 @@ int main()
 		lp(i,0,n-1){
 			ll a,b;
 			cin >> a >> b;
-			G[a].pb(b);
-			G[b].pb(a);
+			G[a].pb(b);	G[b].pb(a);
 		}
 		dfs(1,0);
 		map<ll,ll> M;
@@ -127,7 +123,7 @@ int main()
 			ll cur2 = root[ed[val]];
 			lp(i,0,20){
 				ll d=0;
-				if( (k&(1<<(19-i))) == (1<<(19-i))	)
+				if((k&(1<<(19-i))) == (1<<(19-i)))
 					d=1;
 				if(Node[cur2].nxt[1-d]!=-1&&Node[cur2].last[1-d]>=st[val]){
 					x+=(1<<(19-i));

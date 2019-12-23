@@ -1,13 +1,8 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long int ll;
- 
 class Dinics {
 public:
 	typedef int flowType; // can use float/double
 	static const flowType INF = 1e9; // maximum capacity
-	static const flowType EPS = 0; // minimum capacity/flow change
- 
+	static const flowType EPS = 0; // minimum capacity/flow change 
 private:
 	int nodes, src, dest;
 	vector<int> dist, q, work;
@@ -16,7 +11,6 @@ private:
 	  flowType f, cap;
 	};
 	vector< vector<Edge> > g;
- 
 	bool dinic_bfs() {
 	  fill(dist.begin(), dist.end(), -1);
 	  dist[src] = 0;
@@ -53,11 +47,9 @@ private:
 	  }
 	  return 0;
 	}
- 
 public:
 	Dinics(int n): dist(n, 0), q(n, 0),
 		work(n, 0), g(n), nodes(n) {}
- 
 	// s->t (cap); t->s (rcap)
 	void addEdge(int s, int t, flowType cap, flowType rcap = 0) {
 	  g[s].push_back({t, (int) g[t].size(), 0, cap});
@@ -76,10 +68,8 @@ public:
 	  return result;
 	}
 };
-
 vector<pair<ll,ll>> g[100];
-int main()
-{
+int main(){
 	ll n,m,x;
 	cin>>n>>m>>x;
 	for(ll i=1;i<=m;i++)
@@ -97,28 +87,18 @@ int main()
 		cnt--;
 		mid=(lb+ub)/2;
 		Dinics d(n);
-		for (int i = 1; i < n+1; ++i)
-		{
-			for(auto j:g[i])
-			{
-				if (j.second/mid>1e7)
-				{	
+		for (int i = 1; i < n+1; ++i){
+			for(auto j:g[i]){
+				if (j.second/mid>1e7)	
 					d.addEdge(i-1, j.first-1, x);
-				}
 				else
-				{
 					d.addEdge(i-1, j.first-1, floor((j.second)/mid));
-				}
 			}
 		}
 		if(d.maxFlow(0, n-1)>=x)
-		{
 			lb=mid;
-		}
 		else
-		{
 			ub=mid;
-		}
 		ans=mid;
 	}
 	cout <<fixed<<setprecision(10)<< ans*x;

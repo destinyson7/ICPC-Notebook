@@ -1,23 +1,17 @@
 const ll inf=1e10,N=1005;
 ll flow[N][N],cap[N][N],p[N],timer,ans,vis[N];
 vll G[N];
-bool bfs(ll st,ll end)
-{
+bool bfs(ll st,ll end){
 	queue<ll> q;
 	q.push(st);
-	while(!q.empty())
-	{
+	while(!q.empty()){
 		ll a=q.front();
 		q.pop();
 		if(a==end)
-		{
 			return true;
-		}
-		lp(i,0,G[a].size())
-		{
+		lp(i,0,G[a].size()){
 			ll u=G[a][i];
-			if(vis[u]!=timer && cap[a][u] > flow[a][u])
-			{
+			if(vis[u]!=timer && cap[a][u] > flow[a][u]){
 				p[u] = a;
 				vis[u]=timer;
 				q.push(u);
@@ -26,12 +20,10 @@ bool bfs(ll st,ll end)
 	}
 	return false;
 }
-int main()
-{
+int main(){
 	ll n,m;
 	cin >> n>> m;
-	lp(i,0,m)
-	{
+	lp(i,0,m){
 		ll a,b,w;
 		cin >> a >> b >> w;
 		G[a].pb(b);
@@ -42,22 +34,19 @@ int main()
 	cin >> st >> end;
 	ll x=inf;
 	timer++;
-	while(bfs(st,end))
-	{
+	while(bfs(st,end)){
 		cout<<endl;
 		timer++;
 		ll mn=inf;
 		ll i=end;
-		while(i!=st)
-		{
+		while(i!=st){
 			cout<<i<<" ";
 			mn=min(mn,cap[p[i]][i]-flow[p[i]][i]);
 			i=p[i];
 		}
 		cout<<endl;
 		i=end;
-		while(i!=st)
-		{
+		while(i!=st){
 			flow[p[i]][i]+=mn;
 			flow[i][p[i]]-=mn;
 			i=p[i];
@@ -67,5 +56,4 @@ int main()
 		memset(p,0,sizeof p);
 	}
 	cout<<ans<<endl;
-	return 0;
 }

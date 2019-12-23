@@ -1,14 +1,4 @@
 // SPOJ CNTPRIME // 1-based indexing
-vector <bool> isPrime(M, true);
-void sieve(){
-    isPrime[0] = false;isPrime[1] = false;
-    for(ll i=2; i<M; i++){
-        if(isPrime[i]){
-            for(ll j=2*i; j<M; j+=i)
-                isPrime[j] = false;
-        }
-    }
-}
 ll a[L]; ll seg[4*L]; ll lazy[4*L];
 ll merge(ll a, ll b){
     return (a+b);
@@ -24,7 +14,6 @@ void build(ll pos, ll tl, ll tr){
     build(2*pos+1, mid+1, tr);
     seg[pos] = merge(seg[2*pos], seg[2*pos+1]);
 }
-
 void update(ll pos, ll tl, ll tr, ll l, ll r, ll val){
     if(lazy[pos] != 0){
         if(isPrime[lazy[pos]])

@@ -2,15 +2,11 @@
 #define ln 20
 #define N 100001
 #define INF 1e9
-ll n;
-vector<vector<ll>>ar(N);
-ll lev[N];
-ll pa[N][ln];
+ll n; vector<vector<ll>>ar(N);
+ll lev[N]; ll pa[N][ln];
 ll centroidMarked[N]={0};
-ll sub[N];
-ll par[N];
-ll ans[N];
-// -------------dist(u,v)-----------------
+ll sub[N]; ll par[N]; ll ans[N];
+// dist(u,v)
 void dfs(ll u,ll p,ll l){
     pa[u][0]=p;
     lev[u]=l;
@@ -38,7 +34,7 @@ ll lca(ll u,ll v){
 ll dist(ll u,ll v){
     return lev[u]+lev[v]-2*lev[lca(u,v)];
 }
-// ------------decompose--------------
+// decompose
 ll nn;
 void dfs1(ll u,ll p){
     nn++;
@@ -69,7 +65,7 @@ void decompose(ll u,ll p){
         }
     }
 }
-// --------------query--------------
+// query
 void update(ll u){
     ll x=u;
     while(x!=-1){
@@ -86,7 +82,6 @@ ll query(ll u){
     }
     return an;
 }
-
 int main(){
     ll m;
     cin>>n>>m;
