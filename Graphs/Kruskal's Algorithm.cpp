@@ -3,7 +3,7 @@ ll find(ll s){
         return s;
     }
     return parent[s]=find(parent[s]);
-}
+}//Initialise parent[i] to i for each i
 void unionSet(ll x, ll y){
     ll a = find(x);
     ll b = find(y);
@@ -12,9 +12,9 @@ void unionSet(ll x, ll y){
     }
     parent[a] = b;
     unionSize[b] += unionSize[a];
-}
+}//Initialise unionSize[i] to 1 for each i
 ll kruskals(ll M){
-    ll ans = 0;
+    ll ans = 0;//Sort weights first
     for(ll i=0; i<M; i++){
         ll u = weights[i].ss.ff;
         ll v = weights[i].ss.ss;
@@ -27,25 +27,4 @@ ll kruskals(ll M){
         }
     }
     return ans;
-}
-int main(){
-    ll N, M;
-    cin >> N >> M;
-    for(ll i=0; i<L; i++)
-    {
-        parent[i] = i;
-        unionSize[i] = 1;
-    }
-    for(ll i=0; i<M; i++)
-    {
-        ll u, v, w;
-        cin >> u >> v >> w;
-
-        adj[u].pb(mp(v, w));
-        adj[v].pb(mp(u, w));
-
-        weights.pb(mp(w, mp(u, v)));
-    }
-    sort(weights.begin(), weights.end());
-    cout << kruskals(M) << endl;
 }

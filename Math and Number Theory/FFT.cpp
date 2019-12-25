@@ -44,24 +44,4 @@ vector<ll> multiply(vector<ll> const &a, vector<ll> const &b){
     for(ll i=0; i<n; i++)
         result[i] = llround(fa[i].real());
     return result;
-}
-int main(){
-    ll t;
-    cin>>t;
-    while(t--){
-        ll n;
-        cin>>n;
-        vector<ll>a(n+1), b(n+1);
-        for(ll i=0;i<=n;i++){
-            cin>>a[n-i];
-        }
-        for(ll i=0;i<=n;i++){
-            cin>>b[n-i];
-        }
-        auto c = multiply(a, b);
-        for(ll i=2*n;i>=0;i--){
-            cout << c[i] << " ";
-        }
-        cout << "\n";
-    }
-}
+} // Scan coefficients in reverse order cin >> a[n-i]

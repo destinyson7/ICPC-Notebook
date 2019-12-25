@@ -1,19 +1,5 @@
 // SPOJ CNTPRIME // 1-based indexing
 ll a[L]; ll seg[4*L]; ll lazy[4*L];
-ll merge(ll a, ll b){
-    return (a+b);
-}
-void build(ll pos, ll tl, ll tr){
-    if(tl == tr){
-        if(isPrime[a[tl]])
-            seg[pos] = 1;
-        return;
-    }
-    ll mid = tl + (tr-tl)/2;
-    build(2*pos, tl, mid);
-    build(2*pos+1, mid+1, tr);
-    seg[pos] = merge(seg[2*pos], seg[2*pos+1]);
-}
 void update(ll pos, ll tl, ll tr, ll l, ll r, ll val){
     if(lazy[pos] != 0){
         if(isPrime[lazy[pos]])

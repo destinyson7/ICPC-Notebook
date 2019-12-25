@@ -1,16 +1,4 @@
-/*	Push Relabel O(n^3) implimentation using FIFO method to chose push vertex.
-	This uses gapRelabel heuristic to fasten the process even further. If only 
-	the maxFlow value is required then the algo can be stopped as soon as the
-	gap relabel method is called. However, to get the actual flow values in the
-	edges, we need to let the algo terminate itself.
-	This implementation assumes zero based vertex indexing. Edges to the graph 
-	can be added using the addEdge method only. capacity for residual edges is
-	set to be zero. To get the actual flow values iterate through the edges and
-	check for flow for an edge with cap > 0.
-	This implimentaion is superior over dinic's for graphs where graph is dense  
-	locally at some places and mostly sparse. For randomly generated graphs, this
-	implimentation gives results within seconds for n = 10000 nodes, m = 1000000 
-	edges. */
+/*Push Relabel O(n^3) implimentation using FIFO method to chose push vertex. This uses gapRelabel heuristic to fasten the process even further. If only the maxFlow value is required then the algo can be stopped as soon as the gap relabel method is called. However, to get the actual flow values in the edges, we need to let the algo terminate itself. This implementation assumes zero based vertex indexing. Edges to the graph can be added using the addEdge method only. capacity for residual edges is set to be zero. To get the actual flow values iterate through the edges and check for flow for an edge with cap > 0. This implimentaion is superior over dinic's for graphs where graph is dense locally at some places and mostly sparse. For randomly generated graphs, this implimentation gives results within seconds for n = 10000 nodes, m = 1000000 edges. */
 typedef ll fType;
 struct edge{
 	ll from, to;

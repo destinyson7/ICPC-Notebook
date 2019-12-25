@@ -33,33 +33,23 @@ ostream & operator << (ostream & os, pair <X, Y> const& p)
 {
     return os << "[" << p.ff << ", " << p.ss << "]";
 }
-ll gcd(ll a, ll b)
-{
+ll gcd(ll a, ll b){
     if(b==0)
-    {
         return a;
-    }
     return gcd(b, a%b);
 }
-ll modexp(ll a, ll b, ll c)
-{   
+ll modexp(ll a, ll b, ll c){   
     a%=c;
     ll ans = 1;
-    while(b)
-    {
+    while(b){
         if(b&1)
-        {
             ans = (ans*a)%c;
-        }
-
         a = (a*a)%c;
         b >>= 1;
     }
     return ans;
 }
 const ll L = 1e5+5;
-int main()
-{
+int main(){
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
-}
+    cin.tie(NULL); cout.tie(NULL);}

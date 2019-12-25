@@ -18,7 +18,7 @@ ll bit[30002];
 ll update(ll idx,ll n){
 	while(idx<=n){
 		bit[idx]+=1;
-		idx=idx+(idx&(-idx	));
+		idx=idx+(idx&(-idx));
 	}
 }
 ll query(ll idx){
@@ -40,7 +40,7 @@ int main(){
 	}
 	cin >> q;
 	for (int i = 0; i < q; ++i){
-		ll l,r,k; cin >> l >> r >> k;
+		ll l,r,k; cin>>l>>r>>k;
 		Ssp[i+n].key=k;
 		Ssp[i+n].key2=l;
 		Ssp[i+n].key3=r;
@@ -49,9 +49,9 @@ int main(){
 	sort(Ssp, Ssp+n+q, cmp);
 	for (int i = 0; i < n+q; ++i){
 		if(!Ssp[i].key2)
-			update(Ssp[i].key4+1,n);
+		update(Ssp[i].key4+1,n);
 		else
-			Ssp[i].key=query(Ssp[i].key3)-query(Ssp[i].key2-1);
+		Ssp[i].key=query(Ssp[i].key3)-query(Ssp[i].key2-1);
 	}
 	sort(Ssp, Ssp+n+q, cmp2);
 	for (int i = 0; i < n+q; ++i){

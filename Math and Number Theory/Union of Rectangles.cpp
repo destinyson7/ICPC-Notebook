@@ -1,5 +1,4 @@
-/*primes*/
-//ll p1=1e6+3, p2=1616161, p3=3959297, p4=7393931;
+/*primes*/ //ll p1=1e6+3, p2=1616161, p3=3959297, p4=7393931;
 int n; const int N=1e6;
 struct rect{
     int x1, y1, x2, y2;
@@ -42,14 +41,8 @@ void update(int start, int end, int node, int l, int r, int delta){
     if(tree[node].ss==0) tree[node].ff=tree[2*node].ff+tree[2*node+1].ff;
     return ;
 }
-int query(int start, int end, int node, int l, int r){
-    if(start>r || end<l) return 0;
-    if(start>=l && end<=r){
-        return tree[node].ff;
-    }
-    int mid=(start+end)/2;
-    return query(start, mid, 2*node, l, r)+query(mid+1, end, 2*node+1, l, r);
-}
+int query(int start, int end, int node, int l, int r)
+// Standard Sum query with 1-based indexing
 int main(){
     cin>>n;
     init();

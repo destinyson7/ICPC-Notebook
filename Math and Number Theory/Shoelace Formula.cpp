@@ -1,9 +1,6 @@
-// Used to calculate area of convex polygon, given 
-// its coordinates in the x and y plane
-// (X[i], Y[i]) are coordinates of i'th point. 
 double polygonArea(double X[], double Y[], int n) { 
     double area = 0.0; 
-    int j = n - 1; 
+    int j = n - 1; // X and Y are coordinates of points
     for (int i = 0; i < n; i++){ 
         area += (X[j] + X[i]) * (Y[j] - Y[i]); 
         j = i;  // j is previous vertex to i 

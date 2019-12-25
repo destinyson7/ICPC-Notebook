@@ -1,14 +1,6 @@
-// SPOJ GSS3 // 1-based indexing
-typedef struct node{
-    ll ans, pref, suff, sum;
-} node;
+// 1-based indexing
 ll a[L];
 node seg[4*L];
-node merge(node a, node b){
-    node x;
-    // Merge Function
-    return x;
-}
 void build(ll pos, ll tl, ll tr){
     if(tl == tr){
         seg[pos] = a[tl]; // Leaf Node
@@ -25,11 +17,9 @@ void update(ll pos, ll tl, ll tr, ll idx, ll val){
         return;
     }
     ll mid = tl + (tr - tl)/2;
-    if(tl <= idx && idx <= mid){
+    if(tl <= idx && idx <= mid)
         update(2*pos, tl, mid, idx, val);
-    }
-    else{
+    else
         update(2*pos+1, mid+1, tr, idx, val);
-    }
     seg[pos] = merge(seg[2*pos], seg[2*pos+1]);
-}
+} // Query same as in Lazy Propagation
